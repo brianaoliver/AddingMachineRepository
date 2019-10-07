@@ -17,12 +17,15 @@ package cse360assign2;
 public class AddingMachine {
 	
 	private int total;
+	private String str;
+	private boolean flag = true;
 	
 	/**
 	 * This serves as the constructor of the class. It will initialize the total to 0.
 	 */
 	public AddingMachine () {
 		total = 0;// not needed - included for clarity
+		str = "";
 	}
 	
 	/**
@@ -30,7 +33,7 @@ public class AddingMachine {
 	 * @return total after being modified
 	 */
 	public int getTotal () {
-		return 0;
+		return total;
 	}
 	
 	/**
@@ -38,7 +41,8 @@ public class AddingMachine {
 	 * @param value used to add to the total
 	 */
 	public void add (int value) {
-		
+		total = total + value;
+		str += " + " + value;
 	}
 	
 	/**
@@ -46,7 +50,8 @@ public class AddingMachine {
 	 * @param value used to subtract from the total
 	 */
 	public void subtract (int value) {
-		
+		total = total - value;
+		str += " - " + value;
 	}
 	
 	/**
@@ -54,16 +59,41 @@ public class AddingMachine {
 	 * return str a history documenting all changes made to total
 	 */
 	public String toString () {
-		return "";
+		if(flag == true) {//flag will only be true once, when the string has not been printed at all
+			str = "0" + str;
+			flag = false;
+		}
+		return str;
 	}
 	
 	/**
 	 * Delete the history of all changes made to total.
 	 */
 	public void clear() {
-		
+		str = "";
+	}
+	
+	
+	public static void main(String[] args) {
+		AddingMachine myMachine = new AddingMachine();
+		myMachine.add(4);
+		myMachine.subtract(2);
+		myMachine.add(5);
+		int total = myMachine.getTotal();
+		System.out.println("The total is " + total);
+		System.out.println(myMachine.toString());
+		myMachine.add(7);
+		System.out.println(myMachine.toString());
+		myMachine.subtract(1);
+		total = myMachine.getTotal();
+		System.out.println(myMachine.toString());
+		System.out.println("The total is " + total);
+		myMachine.clear();
+		System.out.println(myMachine.toString());
 	}
 	
 }
+
+
 
 
