@@ -2,8 +2,8 @@ package cse360assign2;
 /**
  * 
  * @author Briana Oliver
- * CSE360
- * assignment 2
+ * Class ID: CSE360 70641
+ * CSE360 assignment 2
  * This file contains the class AddingMachine, as well as its methods used to do calculations and 
  * document the history of changes on a variable integer.
  *
