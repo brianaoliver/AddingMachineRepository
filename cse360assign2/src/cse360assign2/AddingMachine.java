@@ -1,7 +1,7 @@
 package cse360assign2;
 /**
  * 
- * @author brianaoliver
+ * @author Briana Oliver
  * CSE360
  * assignment 2
  * This file contains the class AddingMachine, as well as its methods used to do calculations and 
@@ -11,21 +11,21 @@ package cse360assign2;
 
 /**
  * 
- *This class will serve as a calculator. It will be able to add, subtract, get values and document the histor y
+ *This class will serve as a calculator. It will be able to add, subtract, get values and document the history
  *of changes made to a total.
  */
 public class AddingMachine {
 	
 	private int total;
-	private String str;
-	private boolean flag = true;
+	private String history;
 	
 	/**
-	 * This serves as the constructor of the class. It will initialize the total to 0.
+	 * This serves as the constructor of the class. It will initialize the total to 0, and the history 
+	 * string will have be intialized to 0.
 	 */
 	public AddingMachine () {
 		total = 0;// not needed - included for clarity
-		str = "";
+		history = "0";
 	}
 	
 	/**
@@ -37,61 +37,40 @@ public class AddingMachine {
 	}
 	
 	/**
-	 * Function will add the parameter 'value' and the current total.
+	 * The method will add the parameter 'value' and the current total, as well as
+	 * construct the history string to keep it updated.
 	 * @param value used to add to the total
 	 */
 	public void add (int value) {
 		total = total + value;
-		str += " + " + value;
+		history += " + " + value;
 	}
 	
 	/**
-	 * Function will subtract the parameter and the current total.
+	 * Function will subtract the parameter from the current total and will continue to add to the history
+	 * string accordingly.
 	 * @param value used to subtract from the total
 	 */
 	public void subtract (int value) {
 		total = total - value;
-		str += " - " + value;
+		history += " - " + value;
 	}
 	
 	/**
 	 * Function will keep track of the history of all changes made to total.
-	 * return str a history documenting all changes made to total
+	 * return history a history documenting all changes made to total
 	 */
 	public String toString () {
-		if(flag == true) {//flag will only be true once, when the string has not been printed at all
-			str = "0" + str;
-			flag = false;
-		}
-		return str;
+		return history;
 	}
 	
 	/**
-	 * Delete the history of all changes made to total.
+	 * Delete the history of all changes made to total and reset history string to 0.
 	 */
 	public void clear() {
-		str = "";
-	}
-	
-	
-	public static void main(String[] args) {
-		AddingMachine myMachine = new AddingMachine();
-		myMachine.add(4);
-		myMachine.subtract(2);
-		myMachine.add(5);
-		int total = myMachine.getTotal();
-		System.out.println("The total is " + total);
-		System.out.println(myMachine.toString());
-		myMachine.add(7);
-		System.out.println(myMachine.toString());
-		myMachine.subtract(1);
-		total = myMachine.getTotal();
-		System.out.println(myMachine.toString());
-		System.out.println("The total is " + total);
-		myMachine.clear();
-		System.out.println(myMachine.toString());
-	}
-	
+		history = "0";
+		total = 0;
+	}	
 }
 
 
