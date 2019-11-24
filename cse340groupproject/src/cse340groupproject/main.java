@@ -4,5 +4,5 @@ public class main
 {
 	test;
 	//do someting
-	comitttttttt
+	comittttt
 }
